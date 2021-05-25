@@ -1,13 +1,13 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-05-16 11:15:24
- * @LastEditTime: 2021-05-16 11:30:29
+ * @LastEditTime: 2021-05-25 10:23:51
  * @Description: TO DO
  */
 import ReactDOM from 'react-dom'
-import App from './App'
+import Handlevalue from './Handlevalue'
 
 ReactDOM.render(
-  <App />, 
+  <Handlevalue />, 
   document.getElementById('root')
 )
