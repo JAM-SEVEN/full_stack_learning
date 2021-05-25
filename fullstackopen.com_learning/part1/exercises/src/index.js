@@ -1,13 +1,13 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-05-16 11:15:24
- * @LastEditTime: 2021-05-16 11:30:29
+ * @LastEditTime: 2021-05-25 15:39:38
  * @Description: TO DO
  */
 import ReactDOM from 'react-dom'
-import App from './App'
+import Feedback from './Feedback'
 
 ReactDOM.render(
-  <App />, 
+  <Feedback />, 
   document.getElementById('root')
 )
