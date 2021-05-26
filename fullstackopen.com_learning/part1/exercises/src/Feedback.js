@@ -1,11 +1,23 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-05-25 15:37:43
- * @LastEditTime: 2021-05-25 17:57:16
+ * @LastEditTime: 2021-05-26 10:07:47
  * @Description: TO DO
  */
 
 import React, { useState } from 'react'
+
+const Button = (props) => (
+  <button onClick={props.handleClick}>{props.text}</button>
+)
+
+const Statistic = (props) => (
+  <tr>
+    <td>{props.text}</td>
+    <td>{props.date}{props.unit}</td>
+  </tr>
+  // {/* <div>{props.text} {props.date}</div> */}
+)
 
 const Statistics = ({ good, neutral, bad }) => {
 
@@ -25,12 +37,16 @@ const Statistics = ({ good, neutral, bad }) => {
   return (
     <div>
       <h1>statistics</h1>
-      <div>good {good}</div>
-      <div>neutral {neutral}</div>
-      <div>bad {bad}</div>
-      <div>all {all}</div>
-      <div>average {average}</div>
-      <div>positive {positive}%</div>
+      <table>
+        <tbody>
+          <Statistic text='good' date={good} />
+          <Statistic text='neutral' date={neutral} />
+          <Statistic text='bad' date={bad} />
+          <Statistic text='all' date={all} />
+          <Statistic text='average' date={average} />
+          <Statistic text='positive' date={positive} unit='%'/>
+        </tbody>
+      </table>
     </div>
   )
 }
@@ -48,9 +64,9 @@ const Feedback = () => {
   return (
     <div>
       <h1>give feedback</h1>
-      <button onClick={handleGood}>good</button>
-      <button onClick={handleNeutral}>neutral</button>
-      <button onClick={handleBad}>bad</button>
+      <Button handleClick={handleGood} text='good' />
+      <Button handleClick={handleNeutral} text='neutral' />
+      <Button handleClick={handleBad} text='bad'/>
       <Statistics good={good} neutral={neutral} bad={bad}/>
     </div>
   )
