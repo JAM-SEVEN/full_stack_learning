@@ -1,10 +1,13 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-05-27 14:54:07
- * @LastEditTime: 2021-05-27 17:37:56
+ * @LastEditTime: 2021-05-28 11:08:55
  * @Description: TO DO
  */
 import React, { useState } from 'react'
+import Filter from './components/Filter'
+import Persons from './components/Persons'
+import PersonForm from './components/PersonForm';
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -16,8 +19,7 @@ const App = () => {
   
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
-
-  const [filter, setFilter] = useState('')
+  const [filterPerson, setFilter] = useState('')
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -53,29 +55,28 @@ const App = () => {
 
   const handleFilter = (event) => {
     setFilter(event.target.value)
-    console.log(filter)
-    const filterPersons = persons.filter(person => person.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
+    console.log(event.target.value)
     
   }
+
+  const personToShow =
+    (filterPerson.length > 0) ?
+    persons.filter(person => person.name.toLowerCase().indexOf(filterPerson.toLowerCase()) !== -1) :
+    persons
 
   return (
     <div>
       <h2>Phonebook</h2>
-      filter shown with <input value={filter} onChange={handleFilter}/>
-      <h2>add a new</h2>
-      <form onSubmit={addPerson}>
-        <div>
-          name: <input value={newName} onChange={handleName} />
-        </div>
-        <div>
-          number: <input value={newNumber} onChange={handleNumber} />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
-      <h2>Numbers</h2>
-      {persons.map(person => <div key={person.name}>{person.name} {person.number}</div>)}
+      <Filter filterPerson={filterPerson} handleFilter={handleFilter}/>
+      <h3>Add a new</h3>
+      <PersonForm addPerson={addPerson}
+        newName={newName}
+        handleName={handleName}
+        newNumber={newNumber}
+        handleNumber={handleNumber}
+        />
+      <h3>Numbers</h3>
+      <Persons persons={persons} filterPerson={filterPerson}/>
     </div>
     
   )
