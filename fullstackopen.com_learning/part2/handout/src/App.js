@@ -32,7 +32,7 @@ const App = (props) => {
         setNotes(response.data)
       })
   }
-  useEffect(hook,[])
+  useEffect(hook, [])
   console.log('render', notes.length, 'notes')
 
   const addNote = (event) => {
