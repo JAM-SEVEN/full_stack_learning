@@ -1,7 +1,7 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-05-27 14:54:07
- * @LastEditTime: 2021-05-28 11:08:55
+ * @LastEditTime: 2021-05-28 11:15:10
  * @Description: TO DO
  */
 import React, { useState } from 'react'
@@ -58,11 +58,6 @@ const App = () => {
     console.log(event.target.value)
     
   }
-
-  const personToShow =
-    (filterPerson.length > 0) ?
-    persons.filter(person => person.name.toLowerCase().indexOf(filterPerson.toLowerCase()) !== -1) :
-    persons
 
   return (
     <div>
