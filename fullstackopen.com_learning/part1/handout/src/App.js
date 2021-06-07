@@ -1,10 +1,29 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-05-16 11:15:24
- * @LastEditTime: 2021-05-21 21:36:37
+ * @LastEditTime: 2021-05-24 17:56:44
  */
 import React, { useState } from 'react'
 
+const History = (props) => {
+  if (props.allClicks.length === 0) {
+    return (
+      <div>
+        the app is used by pressing the buttons
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      button press history: {props.allClicks.join(' ')}
+    </div>
+  )
+}
+
+const Button = ({ handleClick, text }) => (
+  <button onClick={handleClick}>{text}</button>
+)
 
 const App = () => {
   const [left, setLeft] = useState(0)
@@ -30,11 +49,11 @@ const App = () => {
   return (
     <div>
       {left}
-      <button onClick={handleLeft}>left</button>
-      <button onClick={handleZero}>zero</button>
-      <button onClick={handleRight}>right</button>
+      <Button handleClick={handleLeft} text="left" />
+      <Button handleClick={handleZero} text="zero" />
+      <Button handleClick={handleRight} text="right" />
       {right}
-      <p>{allClicks.join("->")}</p>
+      <History allClicks={allClicks}/>
     </div>
   )
 }
