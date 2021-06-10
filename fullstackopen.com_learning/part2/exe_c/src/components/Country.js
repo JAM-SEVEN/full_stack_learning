@@ -1,7 +1,7 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-05-31 17:08:29
- * @LastEditTime: 2021-06-10 16:26:03
+ * @LastEditTime: 2021-06-10 16:58:58
  * @Description: TO DO
  */
 
@@ -23,7 +23,7 @@ const Country = ({country}) => {
                 console.log('promise fulfilled')
                 setWeather(response.data)
             })
-    })
+    }, [country.capital])
 
     return (
         <div>

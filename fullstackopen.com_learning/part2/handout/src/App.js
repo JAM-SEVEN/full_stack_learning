@@ -1,7 +1,7 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-05-26 14:13:09
- * @LastEditTime: 2021-05-31 11:52:51
+ * @LastEditTime: 2021-06-10 17:54:59
  * @Description: TO DO
  */
 import React, { useState, useEffect } from 'react'
@@ -12,16 +12,6 @@ const App = (props) => {
   const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState('a new note...')
   const [showAll, setShowAll] = useState(true)
-
-  // useEffect(() => {
-  //   console.log('effect')
-  //   axios
-  //     .get('http://localhost:3001/notes')
-  //     .then(response => {
-  //       console.log('promise fulfilled')
-  //       setNotes(response.data)
-  //     })
-  // }, [])
 
   const hook = () => {
     console.log('effect')
@@ -43,10 +33,16 @@ const App = (props) => {
       import: Math.random() < 0.5,
       id: notes.length + 1,
     }
-    setNotes(notes.concat(noteObject))
-    setNewNote('')
+    axios
+      .post('http://localhost:3001/notes', noteObject)
+      .then(response => {
+        console.log(response)
+        setNotes(notes.concat(noteObject))
+        setNewNote('')
 
-    console.log('button clicked', event.target)
+      })
+    // setNotes(notes.concat(noteObject))
+    // setNewNote('')
   }
 
   const handleNoteChange = (event) => {
