@@ -1,7 +1,7 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-05-27 14:54:07
- * @LastEditTime: 2021-06-07 17:25:18
+ * @LastEditTime: 2021-06-10 11:32:21
  * @Description: TO DO
  */
 
@@ -19,7 +19,6 @@ const App = () => {
     axios
       .get('https://restcountries.eu/rest/v2/all')
       .then(response => {
-        console.log('promise fulfilled')
         console.log(response.data)
         setCountries(response.data)
       })
@@ -34,8 +33,8 @@ const App = () => {
   }
 
   const handleOnShow = (event) => {
-    console.log(event.target.value)
-    // setCountries()
+    console.log(event.target.id)
+    setFilter(event.target.id)
   }
 
   return (
