@@ -1,7 +1,7 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-05-27 14:54:07
- * @LastEditTime: 2021-05-31 17:52:12
+ * @LastEditTime: 2021-06-07 17:25:18
  * @Description: TO DO
  */
 
@@ -33,11 +33,16 @@ const App = () => {
     
   }
 
+  const handleOnShow = (event) => {
+    console.log(event.target.value)
+    // setCountries()
+  }
+
   return (
     <div>
       <h2>Data for countries</h2>
       <Filter filterCountries={filterCountries} handleFilter={handleFilter}/>
-      <Countries countries={countries} filterCountry={filterCountries}/>
+      <Countries countries={countries} filterCountry={filterCountries} show={handleOnShow}/>
     </div>
     
   )

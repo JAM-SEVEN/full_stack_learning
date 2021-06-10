@@ -1,7 +1,7 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-05-31 17:08:29
- * @LastEditTime: 2021-05-31 17:50:07
+ * @LastEditTime: 2021-06-07 14:33:37
  * @Description: TO DO
  */
 
@@ -21,7 +21,7 @@ const Country = ({ country }) => {
             <ul>
                 {country.languages.map(language => <li key={language.name}>{language.name}</li>)}
             </ul>
-            <img src={country.flag} alt="" width="100" height="100"/>
+            <img src={country.flag} alt="" width="160" height="90"/>
             
         </div>
     )
