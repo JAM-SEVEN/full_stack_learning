@@ -1,7 +1,7 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-05-27 14:54:07
- * @LastEditTime: 2021-06-29 15:10:56
+ * @LastEditTime: 2021-06-29 17:42:31
  * @Description: TO DO
  */
 
@@ -9,13 +9,17 @@ import React, { useState, useEffect } from 'react'
 import Filter from './components/Filter'
 import Persons from './components/Persons'
 import PersonForm from './components/PersonForm'
+import Notification from './components/Notification'
 import personServer from './services/persons'
+
+
 
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filterPerson, setFilter] = useState('')
+  const [addedMessage, setAddedMessage] = useState(null)
 
   const hook = () => {
     personServer
@@ -46,19 +50,17 @@ const App = () => {
               console.log(response)
               setPersons(response)
             })
-            alert(`${updatePerson.name}'s number is update to ${updatePerson.number}`)
+            setAddedMessage(`Updated ${ newName }`)
+            setTimeout(() => {
+              setAddedMessage(null)
+            }, 5000)
           })
-          // const newPersons = {...persons}
-          // newPersons[index].number = newNumber
-          // console.log(newPersons)
-          // setPersons(newPersons)
-          // personServer.getAll().then(response => {
-          //   console.log(response)
-          //   setPersons(response)
-          // })
-          // setPersons(persons)
-          // personServer.deleted(event.target.id)
-          // setPersons(persons.filter(person => (person.id.toString() !== event.target.id)))
+
+        }
+        else
+        {
+          setNewName('')
+          setNewNumber('')
         }
         // alert(`${ newName } is already added to phonebook`)
         break
@@ -79,6 +81,10 @@ const App = () => {
           })
           setNewName('')
           setNewNumber('')
+          setAddedMessage(`Added ${ newName }`)
+          setTimeout(() => {
+            setAddedMessage(null)
+          }, 5000)
         }
         else
         {
@@ -118,6 +124,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={addedMessage}/>
       <Filter filterPerson={filterPerson} handleFilter={handleFilter}/>
       <h3>Add a new</h3>
       <PersonForm addPerson={addPerson}
