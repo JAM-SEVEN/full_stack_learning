@@ -1,7 +1,7 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-05-27 14:54:07
- * @LastEditTime: 2021-06-29 17:42:31
+ * @LastEditTime: 2021-06-30 11:29:56
  * @Description: TO DO
  */
 
@@ -54,7 +54,7 @@ const App = () => {
             setTimeout(() => {
               setAddedMessage(null)
             }, 5000)
-          })
+          }).catch(error => {setAddedMessage(`Information of ${ newName } has already been removed from server`)})
 
         }
         else
