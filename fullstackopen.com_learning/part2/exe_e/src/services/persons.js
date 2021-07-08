@@ -1,12 +1,12 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-06-15 16:07:33
- * @LastEditTime: 2021-06-18 08:57:16
+ * @LastEditTime: 2021-07-06 15:30:46
  * @Description: TO DO
  */
 
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/persons'
+const baseUrl = '/api/persons'
 
 const getAll = async () => {
   const request = axios.get(baseUrl)
