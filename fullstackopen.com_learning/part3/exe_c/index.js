@@ -1,7 +1,7 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-07-01 17:45:58
- * @LastEditTime: 2021-07-08 14:54:51
+ * @LastEditTime: 2021-07-15 15:41:13
  * @Description: TO DO
  */
 
@@ -43,9 +43,10 @@ let persons = [
   }
 ];
 
-app.get('/', (request, response) => {
-  response.send('<h1>Hello World!</h1>');
-});
+// app.get('/', (request, response) => {
+//   response.send('<h1>Hello World!</h1>');
+// });
+
 
 app.get('/api/persons', (request, response) => {
   response.json(persons);
