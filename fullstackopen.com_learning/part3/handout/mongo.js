@@ -1,12 +1,14 @@
 /*
  * @Author: JAM-SEVEN
  * @Date: 2021-07-08 16:41:29
- * @LastEditTime: 2021-07-16 11:48:26
+ * @LastEditTime: 2021-08-19 14:46:53
  * @Description: TO DO
  */
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/fullstack');
+mongoose.connect('mongodb://192.168.1.84:27017/fullstack');
+// mongoose.connect('mongodb://localhost:27017/fullstack');
+
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -38,7 +40,7 @@ const Note = mongoose.model('Note', noteSchema);
 //   console.log('note saved!');
 //   mongoose.connection.close();
 // });
-Note.find().then((result) => {
+Note.find({"important":false}).then((result) => {
   result.forEach((note) => {
     console.log(note);
   });
